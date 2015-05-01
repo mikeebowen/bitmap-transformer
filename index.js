@@ -1,7 +1,5 @@
 'use strict';
 
-var fs = require('fs');
+var reader = require('./lib/reader.js');
 
-var image = fs.readFile('./bitmap1.bmp');
-
-console.log('this is the image ' + image);
+reader.read('./img/bitmap1.bmp');
