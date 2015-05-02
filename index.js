@@ -2,4 +2,7 @@
 
 var reader = require('./lib/reader.js');
 
-reader.read('./img/bitmap1.bmp');
+// var test = reader.read('./img/bitmap1.bmp');
+// console.log(test);
+// reader.read('./img/bitmap1.bmp')
+reader.read('./img/bitmap1.bmp')
