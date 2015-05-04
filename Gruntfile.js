@@ -4,7 +4,9 @@ exports = module.exports = {};
 
 module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks("grunt-simple-mocha");
+  grunt.loadNpmTasks('grunt-simple-mocha');
+  grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-jscs');
 
   // initialize grunt
   grunt.initConfig({
@@ -15,10 +17,28 @@ module.exports = function (grunt) {
       },
       // bring in options from .jshintrc
       options: {
-        shintrc: '.jshintrc'
+        jshintrc: '.jshintrc'
+      }
+    },
+    jscs: {
+      dev: {
+        src: ['<%= jshint.dev.src %>']
+      }
+    },
+    simplemocha: {
+      dev: {
+        src: ['test/**/*.js']
+      }
+    },
+    watch: {
+      app: {
+      files: ['<%= jshint.dev.src %>', '<%= simplemocha.dev.src %>'],
+      tasks: ['jshint', 'simplemocha']
       }
     }
   });
-  grunt.registerTask('test', ['jshint:dev']);
-  grunt.registerTask('default', ['test']);
+
+  grunt.registerTask('test', ['jshint:dev', 'jscs:dev']);
+  grunt.registerTask('mocha', ['simplemocha:dev']);
+  grunt.registerTask('default', ['test', 'mocha', 'watch']);
 };
