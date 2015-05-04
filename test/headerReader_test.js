@@ -25,4 +25,3 @@ describe('Test bitmap image header info', function () {
   });
 });
 
-// exports.headerReader_test = headerReader_test;
