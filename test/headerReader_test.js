@@ -24,4 +24,3 @@ describe('Test bitmap image header info', function () {
     expect(testObject.type).to.equal('BM');
   });
 });
-

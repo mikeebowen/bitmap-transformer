@@ -6,7 +6,6 @@ var expect = require('chai').expect;
 // require fs
 var fs = require('fs');
 var reader = require('../lib/reader.js').read;
-var testImage;
 
 describe('Test reader.js function', function () {
   before(function (done) {
