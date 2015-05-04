@@ -3,5 +3,7 @@
 exports = module.exports = {};
 // require chai
 var expect = require('chai').expect;
-// require reader.js to test file
-var
+// require fs
+var fs = require('fs');
+var headerReader = require('../lib/headerReader.js');
+var bitmap = fs.readFile('../img/bitmap1.bmp');
