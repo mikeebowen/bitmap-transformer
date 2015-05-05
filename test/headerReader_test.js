@@ -6,18 +6,19 @@ var expect = require('chai').expect;
 // require fs
 var fs = require('fs');
 var headerReader = require('../lib/headerReader.js');
-var image;
+var reader = require('../lib/reader.js').read;
 var testObject;
 
-describe('Test bitmap image header info', function () {
+describe('Test reader.js function', function () {
   before(function (done) {
-    image = fs.readFile('new-bit-map.bmp', function (error, data) {
+    reader('./img/bitmap1.bmp', function () {
+      fs.readFile('new-bit-map.bmp', function (error, data) {
       if (error) {
         throw error;
       }
       testObject = headerReader.readHeader(data);
-      console.log('this should be something: ' + testObject.type);
       done();
+    });
     });
   });
   it ('File type should be BM', function() {

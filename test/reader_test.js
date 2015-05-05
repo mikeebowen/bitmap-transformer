@@ -9,8 +9,9 @@ var reader = require('../lib/reader.js').read;
 
 describe('Test reader.js function', function () {
   before(function (done) {
-    reader('./img/bitmap1.bmp');
-    done();
+    reader('./img/bitmap1.bmp', function () {
+      done();
+    });
   });
   it ('There should be a new file named new-bit-map.bmp', function() {
     expect(fs.existsSync('./new-bit-map.bmp')).to.eql(true);
